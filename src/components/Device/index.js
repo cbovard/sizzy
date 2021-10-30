@@ -31,6 +31,9 @@ import {
 //electron
 const {os, fs} = window;
 
+// todo
+console.log('iframe js');
+
 type Props = {
   device: DeviceType,
   children?: React.Element<*>,
@@ -44,7 +47,8 @@ type Props = {
   isElectron: boolean
 };
 
-@observer class DeviceComponent extends Component {
+@observer
+class DeviceComponent extends Component {
   props: Props;
   settings: Settings = new Settings();
   webview: Object;
@@ -72,7 +76,8 @@ type Props = {
         fs.mkdirSync(directory);
       }
       fs.writeFile(
-        `${directory}/sizzy_${this.props.device.id}_${dateFormat}_screenshot.png`,
+        `${directory}/sizzy_${this.props.device
+          .id}_${dateFormat}_screenshot.png`,
         image.toPNG(),
         err => {
           if (err) throw err;
@@ -245,9 +250,9 @@ type Props = {
               <Keyboard
                 src={
                   keyboardImg &&
-                    (orientation === ORIENTATIONS.LANDSCAPE
-                      ? keyboardImg.landscape
-                      : keyboardImg.portrait)
+                  (orientation === ORIENTATIONS.LANDSCAPE
+                    ? keyboardImg.landscape
+                    : keyboardImg.portrait)
                 }
               />}
           </FrameWrap>}
